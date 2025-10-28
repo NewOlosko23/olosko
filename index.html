@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Oloo Collins crafts practical digital products — from business websites and web platforms to mobile apps and growth systems — turning ideas into reliable tools people actually use." />
+    <meta name="author" content="Oloo Collins" />
+    <link rel="canonical" href="https://olosko.onrender.com/" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Oloo Collins | Product Builder & Growth Partner" />
+    <meta property="og:description" content="Web platforms, business sites, mobile apps, and dependable growth systems." />
+    <meta property="og:url" content="https://olosko.onrender.com/" />
+    <meta property="og:image" content="https://olosko.onrender.com/og-image.svg" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Oloo Collins | Product Builder & Growth Partner" />
+    <meta name="twitter:description" content="Web platforms, business sites, mobile apps, and dependable growth systems." />
+    <meta name="twitter:image" content="https://olosko.onrender.com/og-image.svg" />
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.png" sizes="any" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>Oloo Collins | Product Builder & Growth Partner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <style>
+      /* Outline font for headings (tuned for dark) */
+      .outline-text {
+        -webkit-text-stroke: 1.5px #e5e7eb;
+        color: transparent;
+      }
+      /* Gradient text */
+      .gradient-text {
+        background: linear-gradient(90deg, #22d3ee, #a78bfa, #f472b6);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      /* Dark grid background */
+      .grid-bg {
+        background-image: linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
+        background-size: 22px 26px;
+        mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+      }
+      
+      /* Header behavior */
+      header {
+        transition: transform .45s ease, opacity .45s ease;
+        will-change: transform, opacity;
+      }
+      .header-hidden {
+        transform: translateY(-110%);
+        opacity: .0;
+      }
+      /* Mobile menu overlay */
+      .mobile-menu {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: calc(100% + 8px);
+        transform-origin: top;
+        transform: scaleY(0);
+        opacity: 0;
+        transition: transform .25s ease, opacity .25s ease;
+      }
+      .mobile-menu.open {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+      /* Pill style applied only when elevated */
+      .header-elevated nav {
+        margin-top: 12px; /* margin above pill */
+        background: #0b1220; /* fully opaque to prevent page bleed-through */
+        border: none;
+        border-radius: 9999px;
+        /* remove blur to avoid transparency feel */
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        box-shadow: 0 10px 25px rgba(0,0,0,.25);
+        overflow: hidden; /* avoid corner artifacts */
+        clip-path: inset(0 round 9999px); /* ensure smooth edges */
+      }
+      /* Soft noise/radial accents */
+      .radial {
+        background: radial-gradient(600px circle at 0% 0%, rgba(34,211,238,.25), transparent 40%),
+                    radial-gradient(800px circle at 100% 0%, rgba(167,139,250,.18), transparent 45%),
+                    radial-gradient(700px circle at 100% 100%, rgba(244,114,182,.12), transparent 40%);
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Font family helper */
+      .font-inter {
+        font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-slate-950 text-slate-100 font-inter relative overflow-x-hidden radial"
+  >
+    <!-- NAVBAR -->
+    <header id="siteHeader" class="sticky top-3 z-30">
+      <nav class="max-w-6xl mx-auto px-3 md:px-4 h-16 flex items-center justify-between transition-all">
+        <a href="#hero" class="flex items-center gap-2 font-semibold text-slate-100">
+          <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400"></span>
+          Oloo Collins
+        </a>
+        <button id="menuBtn" aria-label="Toggle menu" class="md:hidden p-2 rounded hover:bg-white/10">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+        <ul id="navLinks" class="hidden md:flex items-center gap-6 text-sm font-medium text-slate-300">
+          <li><a class="nav-link hover:text-cyan-400" href="#work">Work</a></li>
+          <li><a class="nav-link hover:text-cyan-400" href="#industries">Industries</a></li>
+          <li><a class="nav-link hover:text-cyan-400" href="#contact">Contact</a></li>
+          <li><a class="hidden sm:inline-flex bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400 text-slate-900 px-4 py-2 rounded-full font-semibold" href="#contact">Start</a></li>
+        </ul>
+      </nav>
+      <div id="mobileMenu" class="md:hidden mobile-menu">
+        <ul class="mx-3 px-4 py-3 grid gap-2 text-sm font-medium text-slate-200 bg-slate-900/95 rounded-2xl border border-white/10 shadow-xl">
+          <li><a class="nav-link block py-2" href="#work">Work</a></li>
+          <li><a class="nav-link block py-2" href="#industries">Industries</a></li>
+          <li><a class="nav-link block py-2" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </header>
+    <!-- grid + decorative gradient orbs -->
+    <div class="absolute top-0 left-0 w-full h-[70vh] grid-bg pointer-events-none"></div>
+    <div class="pointer-events-none absolute -top-20 -left-20 w-[500px] h-[500px] bg-cyan-500/20 blur-3xl rounded-full"></div>
+    <div class="pointer-events-none absolute -top-24 right-0 w-[480px] h-[480px] bg-fuchsia-500/20 blur-3xl rounded-full"></div>
+
+    <!-- HERO -->
+    <section
+      id="hero"
+      class="relative flex flex-col items-center justify-center text-center h-[100svh] px-5 sm:px-6"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-slate-900/0 via-slate-900/30 to-slate-950"
+      ></div>
+
+      <div class="z-10" data-aos="fade-up" data-aos-delay="20">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium text-slate-200 bg-white/5 border border-white/10">
+          <span class="inline-block w-1.5 h-1.5 rounded-full bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400"></span>
+          Product builder for teams that ship
+        </span>
+      </div>
+      <h1
+        class="mt-4 text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight z-10 gradient-text"
+        data-aos="fade-up" data-aos-delay="60"
+      >
+        Oloo Collins
+      </h1>
+      <p class="mt-4 text-base sm:text-lg md:text-xl text-slate-300 z-10 max-w-2xl" data-aos="fade-up" data-aos-delay="100">
+        I turn ideas into quietly powerful products — clear sites, useful platforms,
+        and cross‑platform apps that feel effortless to use.
+      </p>
+      <!-- Intentionally no CTAs/quick links here so header nav leads -->
+      <div class="z-10 mt-10 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-left sm:text-left text-slate-300 w-full max-w-3xl" data-aos="fade-up" data-aos-delay="200">
+        <div class="px-4 py-3 rounded-xl bg-white/5 border border-white/10">
+          <div class="text-2xl font-bold">6+ yrs</div>
+          <div class="text-xs opacity-80">designing and shipping</div>
+        </div>
+        <div class="px-4 py-3 rounded-xl bg-white/5 border border-white/10">
+          <div class="text-2xl font-bold">20+ </div>
+          <div class="text-xs opacity-80">projects across sectors</div>
+        </div>
+        <div class="px-4 py-3 rounded-xl bg-white/5 border border-white/10">
+          <div class="text-2xl font-bold">< 24h</div>
+          <div class="text-xs opacity-80">typical first response</div>
+        </div>
+      </div>
+      
+      
+    </section>
+
+    <!-- ABOUT (brief narrative) -->
+    <section id="about" class="py-14 sm:py-16 px-6 sm:px-8 md:px-24">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-4xl font-bold gradient-text mb-4">About</h2>
+        <p class="text-slate-300 leading-relaxed">
+          I turn ideas into practical digital products — clear websites, useful platforms,
+          and cross‑platform apps. The work is measured by outcomes: clarity, speed, and reliability.
+        </p>
+        <div class="mt-6 flex flex-wrap justify-center gap-2 text-xs" data-aos="fade-up" data-aos-delay="80">
+          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">MongoDB</span>
+          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">Express</span>
+          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">React</span>
+          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">Node.js</span>
+          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">React Native</span>
+          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">PostgreSQL</span>
+          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">Firebase</span>
+          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">Supabase</span>
+          <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-200">Postman</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section id="capabilities" class="py-20 sm:py-24 px-6 sm:px-8 md:px-24">
+      <h2 class="text-4xl font-bold gradient-text mb-6 text-center" data-aos="fade-up">Capabilities</h2>
+      <p class="text-slate-300 leading-relaxed max-w-3xl mx-auto mb-10 text-center" data-aos="fade-up" data-aos-delay="50">
+        Projects work when the experience is clear and the tech is dependable. I focus on:
+      </p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 max-w-6xl mx-auto">
+        <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:bg-white/10 transition" data-aos="fade-up" data-aos-delay="50">
+          <h3 class="text-lg font-semibold mb-2">Web Platforms</h3>
+          <p class="text-slate-300 text-sm">Operational tools for teams and customers — fast, reliable, and easy to use.</p>
+          <div class="mt-3 flex flex-wrap gap-2 text-[11px]">
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Dashboards</span>
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Auth & roles</span>
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Payments</span>
+          </div>
+        </div>
+        <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:bg-white/10 transition" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="text-lg font-semibold mb-2">Business Websites</h3>
+          <p class="text-slate-300 text-sm">Clear messaging, fast performance, and design that earns trust.</p>
+          <div class="mt-3 flex flex-wrap gap-2 text-[11px]">
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">SEO</span>
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Accessibility</span>
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Performance</span>
+          </div>
+        </div>
+        <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:bg-white/10 transition" data-aos="fade-up" data-aos-delay="150">
+          <h3 class="text-lg font-semibold mb-2">Mobile Apps</h3>
+          <p class="text-slate-300 text-sm">Cross‑platform apps that extend your service into people’s pockets.</p>
+          <div class="mt-3 flex flex-wrap gap-2 text-[11px]">
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">iOS & Android</span>
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Offline first</span>
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Push notifications</span>
+          </div>
+        </div>
+        <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:bg-white/10 transition" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-lg font-semibold mb-2">Networks & Reliability</h3>
+          <p class="text-slate-300 text-sm">Secure infrastructure, uptime monitoring, and practical automation.</p>
+          <div class="mt-3 flex flex-wrap gap-2 text-[11px]">
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Uptime</span>
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Backups</span>
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Automation</span>
+          </div>
+        </div>
+        <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:bg-white/10 transition" data-aos="fade-up" data-aos-delay="250">
+          <h3 class="text-lg font-semibold mb-2">Search & Ads</h3>
+          <p class="text-slate-300 text-sm">Visibility that compounds: search, content, and targeted campaigns.</p>
+          <div class="mt-3 flex flex-wrap gap-2 text-[11px]">
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Google</span>
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Meta</span>
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Content</span>
+          </div>
+        </div>
+        <div class="p-6 rounded-2xl border border-white/10 bg-white/5 backdrop-blur hover:bg-white/10 transition" data-aos="fade-up" data-aos-delay="300">
+          <h3 class="text-lg font-semibold mb-2">Analytics</h3>
+          <p class="text-slate-300 text-sm">Measure what matters — ship, learn, and iterate with confidence.</p>
+          <div class="mt-3 flex flex-wrap gap-2 text-[11px]">
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Dashboards</span>
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Funnels</span>
+            <span class="px-2.5 py-1 rounded-full bg-white/5 border border-white/10">Attribution</span>
+          </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- INDUSTRIES -->
+    <section id="industries" class="py-20 sm:py-24 px-6 sm:px-8 md:px-24">
+      <h2 class="text-4xl font-bold gradient-text mb-6 text-center" data-aos="fade-up">Industries</h2>
+      <p class="text-slate-300 leading-relaxed max-w-3xl mx-auto mb-10 text-center" data-aos="fade-up" data-aos-delay="50">
+        I design around real‑world constraints — budgets, teams, timelines — so the result fits
+        the day‑to‑day. A few spaces I know well:
+      </p>
+      <div class="max-w-6xl mx-auto space-y-5 sm:space-y-6">
+        <!-- Construction -->
+        <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5" data-aos="fade-up">
+          <div class="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-cyan-400 via-violet-400 to-pink-400"></div>
+          <div class="p-6 md:p-8 grid md:grid-cols-[1fr_auto] gap-6 items-start">
+            <div>
+              <div class="text-sm text-slate-400">Industry</div>
+              <h3 class="text-xl font-semibold">Construction</h3>
+              <p class="text-slate-300 text-sm mt-2">Show the work, win the next job. Outcome‑led pages and simple project updates keep momentum.</p>
+              <ul class="mt-4 grid sm:grid-cols-3 gap-3 text-[11px]">
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Projects gallery</li>
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">RFQ/contact flow</li>
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Simple updates</li>
+              </ul>
+            </div>
+            <a href="#work" class="self-center inline-flex items-center gap-2 text-cyan-300 text-sm hover:underline">See related work <span>→</span></a>
+          </div>
+        </div>
+        <!-- Education & Childcare -->
+        <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5" data-aos="fade-up" data-aos-delay="60">
+          <div class="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-cyan-400 via-violet-400 to-pink-400"></div>
+          <div class="p-6 md:p-8 grid md:grid-cols-[1fr_auto] gap-6 items-start">
+            <div>
+              <div class="text-sm text-slate-400">Industry</div>
+              <h3 class="text-xl font-semibold">Education & Childcare</h3>
+              <p class="text-slate-300 text-sm mt-2">Answer parents’ questions quickly. Clarity and trust drive enrollment.</p>
+              <ul class="mt-4 grid sm:grid-cols-3 gap-3 text-[11px]">
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Programs & fees</li>
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Admissions</li>
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Testimonials</li>
+              </ul>
+            </div>
+            <a href="#work" class="self-center inline-flex items-center gap-2 text-cyan-300 text-sm hover:underline">See related work <span>→</span></a>
+          </div>
+        </div>
+        <!-- Non-profits -->
+        <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5" data-aos="fade-up" data-aos-delay="90">
+          <div class="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-cyan-400 via-violet-400 to-pink-400"></div>
+          <div class="p-6 md:p-8 grid md:grid-cols-[1fr_auto] gap-6 items-start">
+            <div>
+              <div class="text-sm text-slate-400">Industry</div>
+              <h3 class="text-xl font-semibold">Non‑profits</h3>
+              <p class="text-slate-300 text-sm mt-2">Lead with impact stories and simple calls to action — donate, volunteer, partner.</p>
+              <ul class="mt-4 grid sm:grid-cols-3 gap-3 text-[11px]">
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Programs</li>
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Outcomes</li>
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Donations</li>
+              </ul>
+            </div>
+            <a href="#work" class="self-center inline-flex items-center gap-2 text-cyan-300 text-sm hover:underline">See related work <span>→</span></a>
+          </div>
+        </div>
+        <!-- Agencies -->
+        <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5" data-aos="fade-up" data-aos-delay="120">
+          <div class="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-cyan-400 via-violet-400 to-pink-400"></div>
+          <div class="p-6 md:p-8 grid md:grid-cols-[1fr_auto] gap-6 items-start">
+            <div>
+              <div class="text-sm text-slate-400">Industry</div>
+              <h3 class="text-xl font-semibold">Agencies</h3>
+              <p class="text-slate-300 text-sm mt-2">Ship faster with reusable blocks and smooth hand‑offs for campaigns.</p>
+              <ul class="mt-4 grid sm:grid-cols-3 gap-3 text-[11px]">
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Templates</li>
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">CMS</li>
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Brand fidelity</li>
+              </ul>
+            </div>
+            <a href="#work" class="self-center inline-flex items-center gap-2 text-cyan-300 text-sm hover:underline">See related work <span>→</span></a>
+          </div>
+        </div>
+        <!-- Music & Media -->
+        <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5" data-aos="fade-up" data-aos-delay="150">
+          <div class="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-cyan-400 via-violet-400 to-pink-400"></div>
+          <div class="p-6 md:p-8 grid md:grid-cols-[1fr_auto] gap-6 items-start">
+            <div>
+              <div class="text-sm text-slate-400">Industry</div>
+              <h3 class="text-xl font-semibold">Music & Media</h3>
+              <p class="text-slate-300 text-sm mt-2">Smooth release workflows and branded experiences across devices.</p>
+              <ul class="mt-4 grid sm:grid-cols-3 gap-3 text-[11px]">
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Artist onboarding</li>
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Release flows</li>
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Landing pages</li>
+              </ul>
+            </div>
+            <a href="#work" class="self-center inline-flex items-center gap-2 text-cyan-300 text-sm hover:underline">See related work <span>→</span></a>
+          </div>
+        </div>
+        <!-- SaaS & Utilities -->
+        <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-white/5" data-aos="fade-up" data-aos-delay="180">
+          <div class="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-cyan-400 via-violet-400 to-pink-400"></div>
+          <div class="p-6 md:p-8 grid md:grid-cols-[1fr_auto] gap-6 items-start">
+            <div>
+              <div class="text-sm text-slate-400">Industry</div>
+              <h3 class="text-xl font-semibold">SaaS & Utilities</h3>
+              <p class="text-slate-300 text-sm mt-2">Simple account flows, dependable billing, and clear insights.</p>
+              <ul class="mt-4 grid sm:grid-cols-3 gap-3 text-[11px]">
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Onboarding</li>
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Billing</li>
+                <li class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Usage analytics</li>
+              </ul>
+            </div>
+            <a href="#work" class="self-center inline-flex items-center gap-2 text-cyan-300 text-sm hover:underline">See related work <span>→</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK / CASE STUDIES -->
+    <section id="work" class="py-20 sm:py-24 px-6 sm:px-8 md:px-24">
+      <h2 class="text-4xl font-bold gradient-text mb-6 text-center" data-aos="fade-up">Selected Work</h2>
+      <p class="text-slate-300 text-center max-w-2xl mx-auto mb-12" data-aos="fade-up" data-aos-delay="50">A few projects that show different shapes of the work — from brand sites to operational platforms.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6 max-w-6xl mx-auto">
+        <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6 hover:bg-white/10 transition" data-aos="fade-up">
+          <h3 class="text-lg font-semibold mb-2">Construction Firm Website</h3>
+          <p class="text-slate-300 text-sm mb-4">A straightforward site that highlights projects and makes contact easy.</p>
+          <a href="https://dearn.onrender.com/" class="text-cyan-300 font-medium hover:underline" target="_blank" rel="noopener noreferrer">View →</a>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6 hover:bg-white/10 transition" data-aos="fade-up" data-aos-delay="50">
+          <h3 class="text-lg font-semibold mb-2">Daycare Website</h3>
+          <p class="text-slate-300 text-sm mb-4">Clear, reassuring information for parents with simple inquiries.</p>
+          <a href="https://lamasha-daycare.co.ke/" class="text-cyan-300 font-medium hover:underline" target="_blank" rel="noopener noreferrer">View →</a>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6 hover:bg-white/10 transition" data-aos="fade-up" data-aos-delay="100">
+          <h3 class="text-lg font-semibold mb-2">NGO Website</h3>
+          <p class="text-slate-300 text-sm mb-4">Impact stories first; easy ways to donate and get involved.</p>
+          <a href="https://predin.org/" class="text-cyan-300 font-medium hover:underline" target="_blank" rel="noopener noreferrer">View →</a>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6 hover:bg-white/10 transition" data-aos="fade-up" data-aos-delay="150">
+          <h3 class="text-lg font-semibold mb-2">Agency Site</h3>
+          <p class="text-slate-300 text-sm mb-4">Reusable building blocks for fast campaign landing pages.</p>
+          <a href="https://avodal-buiild.onrender.com/" class="text-cyan-300 font-medium hover:underline" target="_blank" rel="noopener noreferrer">View →</a>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6 hover:bg-white/10 transition" data-aos="fade-up" data-aos-delay="200">
+          <h3 class="text-lg font-semibold mb-2">Music Distribution</h3>
+          <p class="text-slate-300 text-sm mb-4">Artist onboarding and release flows — smooth across devices.</p>
+          <a href="https://emg-build.onrender.com/" class="text-cyan-300 font-medium hover:underline" target="_blank" rel="noopener noreferrer">View →</a>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-6 hover:bg-white/10 transition" data-aos="fade-up" data-aos-delay="250">
+          <h3 class="text-lg font-semibold mb-2">Uptime Platform + Android App</h3>
+          <p class="text-slate-300 text-sm mb-4">Proactive monitoring that keeps services healthy and teams informed.</p>
+          <a href="https://avodal-uptime-build.onrender.com/" class="text-cyan-300 font-medium hover:underline" target="_blank" rel="noopener noreferrer">View →</a>
+        </div>
+        </div>
+    </section>
+
+    <!-- PROCESS / TRUST CTA -->
+    <section id="process" class="py-20 sm:py-24 px-6 sm:px-8 md:px-24">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 sm:gap-12 items-start">
+        <div data-aos="fade-right">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">A simple way to ship</h2>
+          <p class="text-slate-300 mb-8">Clear steps, quick momentum, and proof at every stage.</p>
+          <ol class="space-y-5 sm:space-y-6">
+            <li class="flex gap-4">
+              <div class="shrink-0 w-9 h-9 rounded-full bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400 text-slate-900 font-bold grid place-items-center">1</div>
+              <div>
+                <div class="font-semibold mb-1">Outcome first</div>
+                <p class="text-slate-300 text-sm">We align on the problem, audience, and a measurable goal (e.g. qualified leads, faster workflow, reduced support tickets).</p>
+              </div>
+            </li>
+            <li class="flex gap-4">
+              <div class="shrink-0 w-9 h-9 rounded-full bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400 text-slate-900 font-bold grid place-items-center">2</div>
+              <div>
+                <div class="font-semibold mb-1">Lean version fast</div>
+                <p class="text-slate-300 text-sm">We ship the smallest useful version — pages, flows, and data needed to learn without delay.</p>
+                <div class="mt-3 grid grid-cols-2 gap-3 text-xs">
+                  <div class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Week 1: structure + copy</div>
+                  <div class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Week 2: core features</div>
+                  <div class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Week 3: polish + QA</div>
+                  <div class="rounded-md border border-white/10 bg-white/5 px-3 py-2">Week 4: ship + measure</div>
+                </div>
+              </div>
+            </li>
+            <li class="flex gap-4">
+              <div class="shrink-0 w-9 h-9 rounded-full bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400 text-slate-900 font-bold grid place-items-center">3</div>
+              <div>
+                <div class="font-semibold mb-1">Iterate with real feedback</div>
+                <p class="text-slate-300 text-sm">We adjust based on usage — simplify steps, clarify copy, and prioritize what moves the metric.</p>
+              </div>
+            </li>
+          </ol>
+            <div class="mt-8 sm:mt-10 flex flex-wrap gap-2.5 sm:gap-3 text-[11px] sm:text-xs">
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Fixed scope phases</span>
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Progress updates</span>
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Staging preview</span>
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10">Post‑launch support</span>
+          </div>
+        </div>
+        <div class="space-y-5 sm:space-y-6" data-aos="fade-left">
+          <div class="p-5 sm:p-6 rounded-2xl border border-white/10 bg-white/5">
+            <p class="text-slate-200 mb-4">“Collins blends practicality with polish. He ships, and the result just works.”</p>
+            <div class="text-sm text-slate-400">— Client feedback</div>
+          </div>
+          <div class="p-5 sm:p-6 rounded-2xl border border-white/10 bg-white/5">
+            <div class="flex items-center gap-3 text-slate-300 text-sm">
+              <div class="w-2 h-2 rounded-full bg-cyan-400"></div>
+              Typically 2–4 weeks to first release
+            </div>
+            <div class="mt-2 flex items-center gap-3 text-slate-300 text-sm">
+              <div class="w-2 h-2 rounded-full bg-violet-400"></div>
+              Transparent scope and timelines
+            </div>
+            <a href="#contact" class="inline-flex mt-6 bg-gradient-to-r from-cyan-400 via-violet-400 to-pink-400 text-slate-900 px-6 py-3 rounded-full font-semibold hover:opacity-90">Start a project</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-20 sm:py-24 px-6 sm:px-8 md:px-24 text-center">
+      <h2 class="text-4xl font-bold gradient-text mb-6">Let's Connect</h2>
+      <p class="text-slate-300 mb-8">
+        Have a project in mind or need a consultation? Reach out anytime.
+      </p>
+      <div class="flex justify-center gap-4 sm:gap-6 flex-wrap text-slate-200">
+        <a href="mailto:oloogeorge633@gmail.com" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11A2.5 2.5 0 0 1 19.5 20h-15A2.5 2.5 0 0 1 2 17.5v-11Zm2.5-.5a.5.5 0 0 0-.5.5v.3l8 5.2 8-5.2v-.3a.5.5 0 0 0-.5-.5h-15Z"/></svg>
+          Email
+        </a>
+        <a href="https://wa.me/254799590711" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.94 11.94 0 0 0 12.06 0C5.5 0 .24 5.26.24 11.82c0 2.08.55 4.02 1.5 5.7L0 24l6.64-1.71a11.57 11.57 0 0 0 5.42 1.37h.01c6.56 0 11.82-5.26 11.82-11.82 0-3.16-1.23-6.14-3.39-8.3Zm-8.46 18.2h-.01a9.6 9.6 0 0 1-4.89-1.34l-.35-.21-3.94 1.02 1.05-3.84-.23-.39a9.64 9.64 0 0 1-1.46-5.09c0-5.3 4.31-9.61 9.61-9.61 2.56 0 4.97 1 6.78 2.8a9.54 9.54 0 0 1 2.83 6.8c-.01 5.3-4.32 9.62-9.59 9.62Zm5.26-7.2c-.29-.15-1.72-.85-1.98-.95-.26-.1-.45-.15-.64.15-.19.29-.74.95-.9 1.15-.17.19-.33.22-.62.07-.29-.15-1.22-.45-2.33-1.43-.86-.76-1.45-1.7-1.62-1.99-.17-.29-.02-.45.13-.6.13-.13.29-.33.43-.5.14-.17.19-.29.29-.48.1-.19.05-.36-.02-.5-.07-.15-.64-1.55-.88-2.12-.23-.56-.47-.48-.64-.48-.17 0-.36-.02-.55-.02-.19 0-.5.07-.76.36-.26.29-1 1-1 2.43 0 1.43 1.03 2.8 1.17 2.99.14.19 2.02 3.08 4.89 4.32.68.29 1.21.46 1.62.59.68.22 1.29.19 1.77.12.54-.08 1.72-.7 1.97-1.37.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.33Z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://x.com/olos_ko_lins" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" class="h-5 w-5" fill="currentColor"><path d="M714 0 419 339l-174 93 469-432h0Zm486 0L433 1227H0L1067 0h133ZM356 1227l295-339 174-93-469 432H356Z"/></svg>
+          X
+        </a>
+        <a href="https://github.com/NewOlosko23/" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor"><path d="M12 .5C5.73.5.77 5.46.77 11.73c0 4.93 3.2 9.11 7.64 10.59.56.1.77-.24.77-.54 0-.27-.01-1.16-.02-2.11-3.11.68-3.76-1.32-3.76-1.32-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.68.08-.68 1.13.08 1.73 1.15 1.73 1.15 1 .1.68 1.95 2.9 1.39.1-.72.39-1.21.71-1.49-2.48-.28-5.08-1.24-5.08-5.5 0-1.22.44-2.22 1.15-3-.11-.28-.5-1.41.11-2.94 0 0 .94-.3 3.07 1.15a10.66 10.66 0 0 1 2.8-.38c.95 0 1.9.13 2.8.38 2.13-1.45 3.06-1.15 3.06-1.15.61 1.53.23 2.66.12 2.94.71.78 1.14 1.78 1.14 3 0 4.27-2.61 5.22-5.1 5.5.4.35.76 1.04.76 2.1 0 1.52-.01 2.74-.01 3.11 0 .29.2.64.78.53 4.43-1.48 7.62-5.65 7.62-10.58C23.23 5.46 18.27.5 12 .5Z"/></svg>
+          GitHub
+        </a>
+        <a href="https://instagram.com/olosko_collins" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 2 .2 2.5.4.6.2 1 .4 1.4.8.4.4.6.8.8 1.4.2.5.3 1.3.4 2.5.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 2-.4 2.5-.2.6-.4 1-.8 1.4-.4.4-.8.6-1.4.8-.5.2-1.3.3-2.5.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2-.2-2.5-.4-.6-.2-1-.4-1.4-.8-.4-.4-.6-.8-.8-1.4-.2-.5-.3-1.3-.4-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-2 .4-2.5.2-.6.4-1 .8-1.4.4-.4.8-.6 1.4-.8.5-.2 1.3-.3 2.5-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 1.8c-3.2 0-3.6 0-4.9.1-1.1.1-1.7.2-2.1.3-.5.2-.8.3-1 .6-.3.3-.4.6-.6 1-.1.4-.3 1-.3 2.1-.1 1.3-.1 1.7-.1 4.9s0 3.6.1 4.9c.1 1.1.2 1.7.3 2.1.2.5.3.8.6 1 .3.3.6.4 1 .6.4.2 1 .4 2.1.5 1.3.1 1.7.1 4.9.1s3.6 0 4.9-.1c1.1-.1 1.7-.2 2.1-.3.5-.2.8-.3 1-.6.3-.3.4-.6.6-1 .1-.4.3-1 .3-2.1.1-1.3.1-1.7.1-4.9s0-3.6-.1-4.9c-.1-1.1-.2-1.7-.3-2.1-.2-.5-.3-.8-.6-1-.3-.3-.6-.4-1-.6-.4-.2-1-.4-2.1-.5-1.3-.1-1.7-.1-4.9-.1ZM12 6.8a5.2 5.2 0 1 1 0 10.4 5.2 5.2 0 0 1 0-10.4Zm0 1.8a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8Z"/></svg>
+          Instagram
+        </a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 text-center text-sm text-slate-400 border-t border-white/10">
+      © <span id="year"></span> Oloo Collins
+    </footer>
+    
+    <!-- Back to top button -->
+    <button id="backToTop" aria-label="Back to top" class="fixed bottom-6 right-6 hidden items-center justify-center w-11 h-11 rounded-full shadow-md bg-white/10 border border-white/10 text-slate-200 hover:bg-white/20">
+      ↑
+    </button>
+
+    <script>
+      // Mobile menu toggle
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const navLinks = document.querySelectorAll('.nav-link');
+      if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+          mobileMenu.classList.toggle('open');
+        });
+      }
+      navLinks.forEach(l => l.addEventListener('click', () => {
+        if (mobileMenu.classList.contains('open')) mobileMenu.classList.remove('open');
+      }));
+
+      // Scrollspy active link highlighting
+      const sectionIds = ['hero','about','work','industries','contact'];
+      const linkMap = new Map();
+      document.querySelectorAll('a.nav-link').forEach(a => {
+        const hash = a.getAttribute('href');
+        if (hash && hash.startsWith('#')) linkMap.set(hash.slice(1), a);
+      });
+      const opts = { root: null, rootMargin: '0px 0px -60% 0px', threshold: 0.25 };
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          const id = entry.target.id;
+          const link = linkMap.get(id);
+          if (!link) return;
+          if (entry.isIntersecting) {
+            document.querySelectorAll('a.nav-link').forEach(n => n.classList.remove('text-cyan-400'));
+            link.classList.add('text-cyan-400');
+          }
+        });
+      }, opts);
+      sectionIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+      });
+
+      // Back to top button
+      const backToTop = document.getElementById('backToTop');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 600) {
+          backToTop.classList.remove('hidden');
+          backToTop.classList.add('flex');
+        } else {
+          backToTop.classList.add('hidden');
+          backToTop.classList.remove('flex');
+        }
+      });
+      backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    </script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({ once: true, duration: 600, easing: 'ease-out-cubic' });
+      // Footer year
+      (function(){
+        const y = document.getElementById('year');
+        if (y) y.textContent = new Date().getFullYear();
+      })();
+      // Header hide-on-scroll and elevate on scroll
+      (function() {
+        const header = document.getElementById('siteHeader');
+        const about = document.getElementById('about');
+        let lastY = window.scrollY;
+        const elevateAt = 40;
+        let aboutEnd = 0;
+        const computeAboutEnd = () => {
+          if (!about) { aboutEnd = 0; return; }
+          const rect = about.getBoundingClientRect();
+          aboutEnd = rect.top + window.scrollY + rect.height; // bottom of about in page coords
+        };
+        computeAboutEnd();
+        window.addEventListener('resize', computeAboutEnd);
+        let ticking = false;
+        const onScroll = () => {
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              const y = window.scrollY;
+              if (y <= elevateAt) {
+                // At top: integrate with hero
+                header.classList.remove('header-elevated');
+                header.classList.remove('header-hidden');
+              } else if (y <= aboutEnd) {
+                // Within hero->about: keep pill visible (no hide-on-scroll yet)
+                header.classList.remove('header-hidden');
+                header.classList.add('header-elevated');
+              } else {
+                // Past about: hide on scroll down, show pill on scroll up
+                if (y > lastY) {
+                  header.classList.add('header-hidden');
+                } else {
+                  header.classList.remove('header-hidden');
+                  header.classList.add('header-elevated');
+                }
+              }
+              lastY = y;
+              ticking = false;
+            });
+            ticking = true;
+          }
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        // Initial: integrated with hero
+        header.classList.remove('header-elevated');
+        header.classList.remove('header-hidden');
+      })();
+    </script>
+  </body>
+</html>

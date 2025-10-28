@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="50%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#f472b6"/>
+    </linearGradient>
+    <radialGradient id="r1" cx="0%" cy="0%" r="60%">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#0b1220" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="r2" cx="100%" cy="0%" r="60%">
+      <stop offset="0%" stop-color="#a78bfa" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0b1220" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="r3" cx="100%" cy="100%" r="60%">
+      <stop offset="0%" stop-color="#f472b6" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#0b1220" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="22" height="26" patternUnits="userSpaceOnUse">
+      <path d="M22 0H0V26" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="#0b1220"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#r1)"/>
+  <rect width="1200" height="630" fill="url(#r2)"/>
+  <rect width="1200" height="630" fill="url(#r3)"/>
+  <g transform="translate(100,150)">
+    <circle cx="14" cy="14" r="6" fill="url(#g)"/>
+    <text x="36" y="20" fill="#e5e7eb" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="28" font-weight="600">Oloo Collins</text>
+  </g>
+  <g transform="translate(100,260)">
+    <text x="0" y="0" fill="url(#g)" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="72" font-weight="800">Product Builder</text>
+    <text x="0" y="64" fill="#cbd5e1" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="28" font-weight="500">Web platforms • Business sites • Mobile apps</text>
+  </g>
+  <g transform="translate(100,420)" fill="#94a3b8" font-family="Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial" font-size="20">
+    <text>olosko.onrender.com</text>
+  </g>
+</svg>
+
