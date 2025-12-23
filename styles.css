@@ -417,7 +417,7 @@ nav {
   position: relative;
   width: 60px;
   height: 28px;
-  background-color: var(--color-surface);
+  background-color: var(--color-border);
   border: 1px solid var(--color-border);
   border-radius: 100px;
   cursor: pointer;
@@ -429,19 +429,19 @@ nav {
 }
 
 .theme-toggle-btn:hover {
-  border-color: var(--color-primary);
   background-color: var(--color-border);
+  border-color: var(--color-text-secondary);
 }
 
 /* The sliding knob */
 .theme-toggle-btn::after {
   content: '';
   position: absolute;
-  top: 4px;
-  left: 4px;
+  top: 3px;
+  left: 3px;
   width: 20px;
   height: 20px;
-  background-color: var(--color-primary);
+  background-color: var(--color-background);
   border-radius: 50%;
   transition: transform var(--duration-normal) var(--easing);
   box-shadow: var(--shadow-sm);
@@ -450,7 +450,7 @@ nav {
 
 [data-theme="dark"] .theme-toggle-btn::after {
   transform: translateX(32px);
-  background-color: var(--color-accent);
+  background-color: var(--color-text-primary);
 }
 
 /* Icons container */
@@ -463,7 +463,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 6px;
+  padding: 0 5px;
   pointer-events: none;
 }
 
@@ -477,17 +477,16 @@ nav {
 }
 
 .icon-sun {
-  color: white;
+  color: #F59E0B;
+  /* Amber for sun */
   opacity: 1;
   transform: scale(1);
-  margin-left: 0px;
 }
 
 .icon-moon {
   color: var(--color-text-secondary);
   opacity: 0.5;
   transform: scale(0.8);
-  margin-right: 0px;
 }
 
 [data-theme="dark"] .icon-sun {
@@ -497,7 +496,8 @@ nav {
 }
 
 [data-theme="dark"] .icon-moon {
-  color: var(--color-background);
+  color: var(--color-accent);
+  /* Blue for moon */
   opacity: 1;
   transform: scale(1);
 }
@@ -1427,7 +1427,10 @@ img {
   }
 
   h2,
-  h3 {
-    page-break-after: avoid;
-  }
+  page-break-after: avoid;
 }
+}
+
+/* ============================================
+   HOLIDAY BANNER REMOVED
+   ============================================ */
